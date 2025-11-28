@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cardápio • O Caldeirão dos Sabores</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="header.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="menu.css">
+
+  <style>
+    * {
+      font-family: "Antic Slab", serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #eeebcf;
+      margin: 0 auto;
+      max-width: 1200px;
+    }
+
+    #idnavbar {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between; 
+      background: transparent;
+      padding: 10px 20px;
+    }
+
+    #nav_logo {
+      font-size: 24px;
+      color: black;
+    }
+
+    #nav_list {
+      display: flex;
+      list-style: none;
+      gap: 40px;
+    }
+
+    .nav-item a {
+      text-decoration: none;
+      color: black;
+      font-weight: 600;
+      position: relative;
+    }
+
+    .nav-item a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0%;
+      height: 3px;
+      background-color: rgba(64, 0, 255, 0.411);
+      transition: width 0.3s ease;
+    }
+
+    .nav-item a:hover::after {
+      width: 100%;
+    }
+
+    .ver-cardapio-btn {
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(7, 77, 205, 0.548);
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-weight: 600;
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+      cursor: pointer;
+      color: white; 
+      text-decoration: none;
+    }
+
+    .ver-cardapio-btn:hover {
+      background-color: rgba(7, 77, 205, 0.7);
+    }
+
+    #mobile_btn {
+      background: transparent;
+      border: none;
+      font-size: 26px;
+      cursor: pointer;
+    }
+
+    #mobile_menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 75%;
+      height: 100%;
+      background: rgba(0,0,0,0);
+      backdrop-filter: blur(5px);
+      padding: 20px;
+      flex-direction: column;
+      gap: 20px;
+      z-index: 9999;
+    }
+
+    #mobile_menu ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    #mobile_menu a {
+      text-decoration: none;
+      color: black;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    #close_mobile {
+      background: none;
+      border: none;
+      font-size: 28px;
+      cursor: pointer;
+      align-self: flex-end;
+    }
+
+    #menu {
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    #dishes {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-top: 32px;
+      flex-wrap: wrap;
+    }
+
+    .dish {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 250px;
+      padding: 20px;
+      background-color: #feffc3;
+      border-radius: 20px; 
+      box-shadow: 0 4px 14px rgba(0,0,0,0.15); 
+      position: relative;
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
+
+    .dish:hover {
+      transform: scale(1.03);
+    }
+
+    .dish-heart {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .dish-heart i {
+      color: black; 
+      font-size: 22px;
+    }
+
+    .dish-image {
+      width: 180px;       
+      height: auto;
+      margin-bottom: 10px;
+    }
+
+    .dish-title {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .dish-description {
+      font-size: 14px;
+      color: #333;
+      line-height: 1.4;
+    }
+
+    .dish-rate {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 8px;
+      justify-content: center;
+    }
+
+    .dish-rate i {
+      color: black;
+    }
+
+    .dish-price {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .dish-price button {
+      background-color: #0044cc;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .voltar-btn {
+      display: inline-block;
+      margin: 25px 0;
+      padding: 12px 20px;
+      background-color: rgba(7, 77, 205, 0.548);
+      color: white;
+      border-radius: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+      transition: 0.3s;
+    }
+
+    .voltar-btn:hover {
+      background-color: rgba(7, 77, 205, 0.7);
+    }
+  </style>
+</head>
+<body>
+
+  <div id="mobile_menu">
+    <button id="close_mobile"><i class="fa-solid fa-xmark"></i></button>
+    <ul>
+      <li class="nav-item"><a href="index.html#home">Início</a></li>
+      <li class="nav-item"><a href="cardapio.html">Cardápio</a></li>
+      <li class="nav-item"><a href="index.html#testimonials">Feedbacks</a></li>
+    </ul>
+    <button class="btn-default">Registre seu pedido aqui!</button>
+  </div>
+
+  <header>
+    <nav id="idnavbar">
+      <i class="fa-solid fa-trophy" id="nav_logo">O Caldeirao dos Sabores</i>
+      
+      <ul id="nav_list">
+        <li class="nav-item active"><a href="index.html#home">Início</a></li>
+        <li class="nav-item"><a href="cardapio.html">Cardápio</a></li>
+        <li class="nav-item"><a href="index.html#testimonials">Feedbacks</a></li>
+      </ul>
+
+      <div style="display:flex; align-items:center; gap:8px;">
+        <a href="cardapio.html" class="ver-cardapio-btn">Ver Cardápio</a>
+        <button id="mobile_btn"><i class="fa-solid fa-bars"></i></button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section style="padding: 40px 20px; text-align:center;">
+      <h1 class="title">Nosso Cardápio</h1>
+      <p class="description">Veja todos os pratos especiais inspirados nos clássicos Disney!</p>
+    </section>
+
+    <section id="menu">
+      <div id="dishes">
+
+        <div class="dish"> 
+          <div class="dish-heart"><i class="fa-solid fa-star"></i></div>
+          <img src="src/images/Chocolate quente Frozen.png" class="dish-image">
+          <h3 class="dish-title">Chocolate Quente Frozen</h3>
+          <span class="dish-description">Delicioso chocolate quente inspirado no filme Frozen (2013).</span>
+          <div class="dish-rate">
+            <i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i>
+            <i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i>
+            <span>(5000+)</span>
+          </div>
+          <div class="dish-price"><h4>R$ 20,13</h4><button><i class="fa-solid fa-basket-shopping"></i></button></div>
+        </div>
+
+        <div class="dish"> 
+          <div class="dish-heart"><i class="fa-solid fa-star"></i></div>
+          <img src="src/images/prato_ratatulie-removebg-preview (1).png" class="dish-image">
+          <h3 class="dish-title">Ratatouille</h3>
+          <span class="dish-description">Legumes frescos e ervas aromáticas inspirados no filme Ratatouille da Pixar de 2007.</span>
+          <div class="dish-rate">
+            <i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i>
+            <i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i>
+            <span>(2000+)</span>
+          </div>
+          <div class="dish-price"><h4>R$ 35,90</h4><button><i class="fa-solid fa-basket-shopping"></i></button></div>
+        </div>
+
+        <div class="dish"> 
+          <div class="dish-heart"><i class="fa-solid fa-star"></i></div>
+          <img src="src/images/torta de maça Branca de Neve.png" class="dish-image">
+          <h3 class="dish-title">Torta de Maçã Branca de Neve</h3>
+          <span class="dish-description">Torta clássica inspirada em Branca de Neve da Disney de 1937.</span>
+          <div class="dish-rate">
+            <i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i>
+            <i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i>
+            <span>(5000+)</span>
+          </div>
+          <div class="dish-price"><h4>R$ 19,37</h4><button><i class="fa-solid fa-basket-shopping"></i></button></div>
+        </div>
+
+        <div class="dish"> 
+          <div class="dish-heart"><i class="fa-solid fa-star"></i></div>
+          <img src="src/images/Drink-me Alice No Pais das Maravilhas.png" class="dish-image">
+          <h3 class="dish-title">Drink-me (Alice)</h3>
+          <span class="dish-description">Drink inspirado em Alice no País das Maravilhas da Disney de 1951.</span>
+          <div class="dish-rate">
+            <i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i>
+            <i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i>
+            <span>(5000+)</span>
+          </div>
+          <div class="dish-price"><h4>R$ 15,50</h4><button><i class="fa-solid fa-basket-shopping"></i></button></div>
+        </div>
+
+        <div class="dish"> 
+          <div class="dish-heart"><i class="fa-solid fa-star"></i></div>
+          <img src="src/images/Espaguete a Dama e o Vagabundo (centralizado).png" class="dish-image">
+          <h3 class="dish-title">Espaguete a Dama e o Vagabundo</h3>
+          <span class="dish-description">Delicioso macarrão com almondegas inspirado no filme A Dama e o Vagabundo da Disney de 1955.</span>
+          <div class="dish-rate">
+            <i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i>
+            <i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i>
+            <span>(5000+)</span>
+          </div>
+          <div class="dish-price"><h4>R$ 19,55</h4><button><i class="fa-solid fa-basket-shopping"></i></button></div>
+        </div>
+
+        <div class="dish"> 
+          <div class="dish-heart"><i class="fa-solid fa-star"></i></div>
+          <img src="src/images/congee-mulan-removebg-preview.png" class="dish-image">
+          <h3 class="dish-title">Congee Mulan</h3>
+          <span class="dish-description">Delicioso mingau de arroz cozido com ovos e bacon, inspirado no filme Mulan da Disney 1998.</span>
+          <div class="dish-rate">
+            <i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i>
+            <i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i>
+            <span>(4000+)</span>
+          </div>
+          <div class="dish-price"><h4>R$ 10,50</h4><button><i class="fa-solid fa-basket-shopping"></i></button></div>
+        </div>
+
+        <div class="dish"> 
+          <div class="dish-heart"><i class="fa-solid fa-star"></i></div>
+          <img src="src/images/Bolinho de Espinafre-Nova Onda do Imperador.png" class="dish-image">
+          <h3 class="dish-title">Bolinho de Espinafre A Nova Onda do Imperador</h3>
+          <span class="dish-description">  Delicioso Bolinho de Espinafre,inspirado no filme A Nova Onda do Imperador da Disney de 2001 </span>
+          <div class="dish-rate">
+            <i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i>
+            <i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i>
+            <span>(4000+)</span>
+          </div>
+          <div class="dish-price"><h4>R$ 5,50</h4><button><i class="fa-solid fa-basket-shopping"></i></button></div>
+        </div>
+
+<div class="dish"> 
+          <div class="dish-heart"><i class="fa-solid fa-star"></i></div>
+          <img src="src/images/Patolé Zootopia.png" class="dish-image">
+          <h3 class="dish-title">Patolé Zootopia</h3>
+          <span class="dish-description">Deliciosa sobremesa,inspirada no filme Zootopia da Disney de 2016</span>
+          <div class="dish-rate">
+            <i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i>
+            <i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i>
+            <span>(4000+)</span>
+          </div>
+          <div class="dish-price"><h4>R$ 7,50</h4><button><i class="fa-solid fa-basket-shopping"></i></button></div>
+        </div>
+
+      </div>
+    </section>
+
+    <div style="text-align:center; margin-bottom: 40px;">
+      <a href="index.html" class="voltar-btn">← Voltar ao Início</a>
+    </div>
+  </main>
+
+  <script>
+    $("#mobile_btn").click(function() {
+      $("#mobile_menu").fadeIn(200);
+    });
+
+    $("#close_mobile").click(function() {
+      $("#mobile_menu").fadeOut(200);
+    });
+  </script>
+
+  <footer> 
+    
+
+    <div id="footer_items">
+      <span id="copyright">
+        &copy; 2025 O Caldeirão dos Sabores. Todos os direitos reservados.
+      </span>
+
+  
+        
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="header.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="menu.css">
+  <link rel="stylesheet" href="testimonials.css">
+  <link rel="stylesheet" href="footer.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <title>O Caldeirao dos Sabores</title>
+
+  <style>
+    * {
+      font-family: "Antic Slab", serif;
+      font-weight: 400;
+      font-style: normal;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body { 
+      background-color: #eeebcf;
+      margin: 0 auto;
+      max-width: 1200px;
+    }
+
+    header {
+      width: 100%;
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      background:transparent;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #idnavbar {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between; 
+      background: transparent;
+      padding: 10px 20px;
+    }
+
+    #nav_logo {
+      font-size: 24px;
+      color: black;
+    }
+
+    #nav_list {
+      display: flex;
+      list-style: none;
+      gap: 40px;
+    }
+
+    .nav-item a {
+      text-decoration: none;
+      color: black;
+      font-weight: 600;
+      position: relative;
+    }
+
+    .nav-item a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0%;
+      height: 3px;
+      background-color: rgba(64, 0, 255, 0.411);
+      transition: width 0.3s ease;
+    }
+
+    .nav-item a:hover::after {
+      width: 100%;
+    }
+
+    .btn-default {
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(7, 77, 205, 0.548);
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-weight: 600;
+      box-shadow: 0px 0px 10px 2px rgba(0, 0,0,0.1);
+      cursor: pointer;
+      color: white; 
+    }
+
+    #cta_buttons .btn-default {
+      background-color: white ;
+      color: black !important;
+      border: 2px solid black;
+    }
+
+    #home {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 40px 20px;
+      flex-wrap: wrap;
+    }
+
+    #cta {
+      max-width: 600px;
+    }
+
+    #banner img {
+      width: 100%;
+      max-width: 450px;
+      height: auto;
+    }
+
+    #menu {
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    #dishes {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-top: 32px;
+      flex-wrap: wrap;
+    }
+
+    .dish {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 250px;
+      padding: 20px;
+      background-color: #feffc3;
+      border-radius: 20px; 
+      box-shadow: 0 4px 14px rgba(0,0,0,0.15); 
+      position: relative;
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
+
+    .dish:hover {
+      transform: scale(1.03);
+    }
+
+    .dish-heart {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .dish-heart i {
+      color: black; 
+      font-size: 22px;
+    }
+
+    .dish-image {
+      width: 180px;       
+      height: auto;
+      margin-bottom: 10px;
+    }
+
+    .dish-title {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .dish-description {
+      font-size: 14px;
+      color: #333;
+      line-height: 1.4;
+    }
+
+    .dish-rate {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 8px;
+      justify-content: center;
+    }
+
+    .dish-rate i {
+      color: black;
+    }
+
+    .dish-price {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .dish-price button {
+      background-color: #0044cc;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .social-media-buttons {
+      margin-top: 20px;
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-media-buttons a {
+      font-size: 24px;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+
+    .social-media-buttons a:hover {
+      color: #0044cc;
+    }
+
+    #phone_button {
+      color: black ;
+    }
+
+    #mobile_btn {
+      background: none;
+      border: none;
+      font-size: 26px;
+      cursor: pointer;
+    }
+
+    #mobile_menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 75%;
+      height: 100%;
+      background: rgba(0,0,0,0);     
+      backdrop-filter: blur(5px);      
+      box-shadow: none;               
+      z-index: 9999;
+      padding: 20px;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    #mobile_menu ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    #mobile_menu a {
+      text-decoration: none;
+      color: black;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    #close_mobile {
+      background: none;
+      border: none;
+      font-size: 28px;
+      cursor: pointer;
+      align-self: flex-end;
+    }
+
+    
+    #testimonials {
+      display: flex;
+      align-items: flex-start;
+      gap: 30px;
+      padding: 50px 20px;
+    }
+
+    #testimonial_disney {
+      width: 300px;
+      height: auto;
+      flex-shrink: 0;
+    }
+
+    #testimonials_content {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      flex: 1;
+    }
+
+    #feedbacks {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .feedback {
+      display: flex;
+      background-color: #feffc3;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+      gap: 20px;
+      align-items: center;
+      transition: transform 0.2s ease;
+    }
+
+    .feedback:hover {
+      transform: scale(1.03);
+    }
+
+    .feedback img {
+      width: 80px;
+      height: 80px;
+      border-radius: 15px;
+      object-fit: cover;
+    }
+
+    .feedback-content p:first-child {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .feedback-content span i {
+      color: black;
+    }
+
+    .feedback-content p:last-child {
+      font-style: italic;
+    }
+
+    #testimonials button.btn-default {
+      align-self: flex-start;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  
+  <div id="mobile_menu">
+    <button id="close_mobile"><i class="fa-solid fa-xmark"></i></button>
+    <ul>
+      <li class="nav-item"><a href="#home">Início</a></li>
+      <li class="nav-item"><a href="#menu">Cardápios</a></li>
+      <li class="nav-item"><a href="#testimonials">Feedbacks</a></li>
+    </ul>
+    <button class="btn-default">Registre seu pedido aqui!</button>
+  </div>
+
+  <header>
+    <nav id="idnavbar">
+      <i class="fa-solid fa-trophy" id="nav_logo">O Caldeirao dos Sabores</i>
+      <ul id="nav_list">
+        <li class="nav-item active"><a href="#home">Início</a></li>
+        <li class="nav-item"><a href="#menu">Cardápios</a></li>
+        <li class="nav-item"><a href="#testimonials">Feedbacks</a></li>
+      </ul>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <button class="btn-default">Registre seu pedido aqui!</button>
+        <button id="mobile_btn"><i class="fa-solid fa-bars"></i></button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home">
+      <div style="flex: 1;">
+        <div id="cta">
+          <h1 class="title"><strong>As melhores comidas irão até <span style="color: rgba(0, 21, 255, 0.412);">você</span></strong></h1>
+          <p class="description">As comidas dos nossos personagens Disney estão aqui esperando por você! Venha conferir!</p> 
+        </div>
+
+        <div id="cta_buttons">
+          <a href="#" class="btn-default">Ver Cardápio</a>
+          <a href="tel:+18111928" class="btn-default" id="phone_button"><i class="fa-solid fa-phone"></i>(18) 1118-1928</a>
+        </div>
+
+        <div class="social-media-buttons">
+          <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <div id="banner" style="flex: 1; display: flex; justify-content: flex-end;">
+        <img src="src/images/Imagem_de_menu_site__2_-removebg-preview.png" alt="Banner">
+      </div>
+    </section>
+
+    <section id="menu">
+      <h2 class="section-title">Cardápio</h2> 
+      <h3 class="section-subtitle">Nossos Pratos Especiais</h3>
+
+      <div id="dishes">
+
+        <div class="dish"> 
+          <div class="dish-heart"><i class="fa-solid fa-star"></i></div>
+          <img src="src/images/Chocolate quente Frozen.png" class="dish-image" alt="Chocolate Quente">
+          <h3 class="dish-title">Chocolate Quente Frozen</h3>
+          <span class="dish-description">Delicioso chocolate quente,inspirado no filme Frozen de 2013.</span>
+          <div class="dish-rate">
+            <i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i>
+            <span>(5000+)</span>
+          </div>
+          <div class="dish-price"><h4>R$ 20,13</h4><button><i class="fa-solid fa-basket-shopping"></i></button></div>
+        </div>
+
+        <div class="dish"> 
+          <div class="dish-heart"><i class="fa-solid fa-star"></i></div>
+          <img src="src/images/prato_ratatulie-removebg-preview (1).png" class="dish-image" alt="Ratatouille">
+          <h3 class="dish-title">Ratatouille</h3>
+          <span class="dish-description">Delicioso prato francês feito com legumes frescos e ervas aromáticas, inspirado no filme Ratatouille da Pixar de 2007.</span>
+          <div class="dish-rate">
+            <i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i>
+            <span>(2000+)</span>
+          </div>
+          <div class="dish-price"><h4>R$ 35,90</h4><button><i class="fa-solid fa-basket-shopping"></i></button></div>
+        </div>
+
+        <div class="dish"> 
+          <div class="dish-heart"><i class="fa-solid fa-star"></i></div>
+          <img src="src/images/torta de maça Branca de Neve.png" class="dish-image" alt="Torta de Maçã">
+          <h3 class="dish-title">Torta de Maçã Branca de Neve</h3>
+          <span class="dish-description">Deliciosa torta de maçã caseira, inspirada na clássica história da Branca de Neve da Disney de 1937.</span>
+          <div class="dish-rate">
+            <i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i>
+            <span>(5000+)</span>
+          </div>
+          <div class="dish-price"><h4>R$ 19,37</h4><button><i class="fa-solid fa-basket-shopping"></i></button></div>
+        </div>
+
+        <div class="dish"> 
+          <div class="dish-heart"><i class="fa-solid fa-star"></i></div>
+          <img src="src/images/Drink-me Alice No Pais das Maravilhas.png" class="dish-image" alt="Drink-me">
+          <h3 class="dish-title">Drink-me Alice no país das maravilhas</h3>
+          <span class="dish-description">Drink inspirado no filme Alice no país das maravilhas de 1951.</span>
+          <div class="dish-rate">
+            <i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i>
+            <span>(5000+)</span>
+          </div>
+          <div class="dish-price"><h4>R$ 15,50</h4><button><i class="fa-solid fa-basket-shopping"></i></button></div>
+        </div>
+        <a href="cardapio.html" class="btn-default">Ver Cardápio</a>
+      </div>
+    </section>
+
+    <section id="testimonials">
+      <img src="src/images/castelo disney.png" alt="Castelo da Disney" id="testimonial_disney">
+
+      <div id="testimonials_content">
+        <h2 class="section-title">Depoimentos</h2>
+        <h3 class="section-subtitle">O que nossos clientes dizem sobre nós</h3>
+
+        <div id="feedbacks">
+          <div class="feedback">
+             <img src="src/images/Mickey Mouse.png" alt="Mickey Mouse">
+            <div class="feedback-content">
+              <p>Mickey Mouse <span><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i></span></p>
+              <p>"O Caldeirão dos Sabores é simplesmente mágico! A comida é deliciosa e o atendimento é impecável. Recomendo a todos os meus amigos!"</p>
+            </div> 
+          </div>
+
+          <div class="feedback">
+             <img src="src/images/Branca de Neve.png" alt="Branca de Neve">
+            <div class="feedback-content">
+              <p>Branca de Neve <span><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i></span></p>
+              <p>"Eu adorei a experiência no Caldeirão dos Sabores! A comida é maravilhosa e o ambiente é encantador. Mal posso esperar para voltar!"</p>
+            </div> 
+          </div>
+
+          <div class="feedback">
+             <img src="src/images/Stitch.png" alt="Stitch">
+            <div class="feedback-content">
+              <p>Stitch <span><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i></span></p>
+              <p>"O Caldeirão dos Sabores é um lugar mágico! A comida é deliciosa e o ambiente é encantador. Mal posso esperar para voltar!"</p>
+            </div> 
+          </div>
+        </div>
+
+        <a href="feedbacks.html" class="btn-default">Ver Mais Feedbacks</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer> 
+    
+
+    <div id="footer_items">
+      <span id="copyright">
+        &copy; 2025 O Caldeirão dos Sabores. Todos os direitos reservados.
+      </span>
+
+      <div class="social-media-buttons">
+          <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+        
+    </div>
+  </footer>
+
+  <script>
+    $("#mobile_btn").click(function() {
+      $("#mobile_menu").fadeIn(200);
+    });
+
+    $("#close_mobile").click(function() {
+      $("#mobile_menu").fadeOut(200);
+    });
+  </script>
+
+</body>
+</html>

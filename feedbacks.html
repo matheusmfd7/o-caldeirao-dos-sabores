@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="header.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="menu.css">
+  <link rel="stylesheet" href="testimonials.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <title>Feedbacks - O Caldeirao dos Sabores</title>
+
+  <style>
+    * {
+      font-family: "Antic Slab", serif;
+      font-weight: 400;
+      font-style: normal;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body { 
+      background-color: #eeebcf;
+      margin: 0 auto;
+      max-width: 1200px;
+    }
+
+    header {
+      width: 100%;
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      background:transparent;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #idnavbar {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between; 
+      background: transparent;
+      padding: 10px 20px;
+    }
+
+    #nav_logo {
+      font-size: 24px;
+      color: black;
+    }
+
+    #nav_list {
+      display: flex;
+      list-style: none;
+      gap: 40px;
+    }
+
+    .nav-item a {
+      text-decoration: none;
+      color: black;
+      font-weight: 600;
+      position: relative;
+    }
+
+    .nav-item a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0%;
+      height: 3px;
+      background-color: rgba(64, 0, 255, 0.411);
+      transition: width 0.3s ease;
+    }
+
+    .nav-item a:hover::after {
+      width: 100%;
+    }
+
+    .btn-default {
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(7, 77, 205, 0.548);
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-weight: 600;
+      box-shadow: 0px 0px 10px 2px rgba(0, 0,0,0.1);
+      cursor: pointer;
+      color: white; 
+      text-decoration: none;
+    }
+
+    #testimonials {
+      display: flex;
+      align-items: flex-start;
+      gap: 30px;
+      padding: 50px 20px;
+    }
+
+    #testimonial_disney {
+      width: 300px;
+      height: auto;
+      flex-shrink: 0;
+    }
+
+    #testimonials_content {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      flex: 1;
+    }
+
+    #feedbacks {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .feedback {
+      display: flex;
+      background-color: #feffc3;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+      gap: 20px;
+      align-items: center;
+      transition: transform 0.2s ease;
+    }
+
+    .feedback:hover {
+      transform: scale(1.03);
+    }
+
+    .feedback img {
+      width: 80px;
+      height: 80px;
+      border-radius: 15px;
+      object-fit: cover;
+    }
+
+    .feedback-content p:first-child {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .feedback-content span i {
+      color: black;
+    }
+
+    .feedback-content p:last-child {
+      font-style: italic;
+    }
+
+    #testimonials button.btn-default {
+      align-self: flex-start;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="mobile_menu">
+    <button id="close_mobile"><i class="fa-solid fa-xmark"></i></button>
+    <ul>
+      <li class="nav-item"><a href="index.html">Início</a></li>
+      <li class="nav-item"><a href="index.html#menu">Cardápios</a></li>
+      <li class="nav-item"><a href="feedbacks.html">Feedbacks</a></li>
+    </ul>
+    <button class="btn-default">Registre seu pedido aqui!</button>
+  </div>
+
+  <header>
+    <nav id="idnavbar">
+      <i class="fa-solid fa-trophy" id="nav_logo">O Caldeirao dos Sabores</i>
+      <ul id="nav_list">
+        <li class="nav-item"><a href="index.html">Início</a></li>
+        <li class="nav-item"><a href="index.html#menu">Cardápios</a></li>
+        <li class="nav-item active"><a href="feedbacks.html">Feedbacks</a></li>
+      </ul>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <button class="btn-default">Registre seu pedido aqui!</button>
+        <button id="mobile_btn"><i class="fa-solid fa-bars"></i></button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section id="testimonials">
+      <img src="src/images/castelo disney.png" alt="Castelo da Disney" id="testimonial_disney">
+
+      <div id="testimonials_content">
+        <h2 class="section-title">Depoimentos</h2>
+        <h3 class="section-subtitle">O que nossos clientes dizem sobre nós</h3>
+
+        <div id="feedbacks">
+          <div class="feedback">
+            <img src="src/images/Mickey Mouse.png" alt="Mickey Mouse">
+            <div class="feedback-content">
+              <p>Mickey Mouse <span><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i></span></p>
+              <p>"O Caldeirão dos Sabores é simplesmente mágico! A comida é deliciosa e o atendimento é impecável. Recomendo a todos os meus amigos!"</p>
+            </div> 
+          </div>
+
+          <div class="feedback">
+            <img src="src/images/Branca de Neve.png" alt="Branca de Neve">
+            <div class="feedback-content">
+              <p>Branca de Neve <span><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i></span></p>
+              <p>"Eu adorei a experiência no Caldeirão dos Sabores! A comida é maravilhosa e o ambiente é encantador. Mal posso esperar para voltar!"</p>
+            </div> 
+          </div>
+
+          <div class="feedback">
+            <img src="src/images/Stitch.png" alt="Stitch">
+            <div class="feedback-content">
+              <p>Stitch <span><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i></span></p>
+              <p>"O Caldeirão dos Sabores é um lugar mágico! A comida é deliciosa e o ambiente é encantador. Mal posso esperar para voltar!"</p>
+            </div> 
+            </div>
+
+             <div class="feedback">
+            <img src="src/images/Rapunzel.png" alt="Rapunzel">
+            <div class="feedback-content">
+              <p>Rapunzel <span><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i></span></p>
+              <p>"Amei o Caldeirão dos Sabores. Ambiente agradavel para vim em dois!"</p>
+            </div> 
+          </div>
+
+          <div class="feedback">
+            <img src="src/images/Pumba.png" alt="Pumba">
+            <div class="feedback-content">
+              <p>Pumba <span><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i></span></p>
+              <p>"Ambiente bem viscoso e as comidas muito gostosa,amei cada prato e valeu a pena!"</p>
+            </div> 
+          </div>
+
+          <div class="feedback">
+            <img src="src/images/Robin Hood.png" alt="Robin Hood">
+            <div class="feedback-content">
+              <p>Robin Hood <span><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i></span></p>
+              <p>"Lugar aconchegante e confortavel para vim com os amigos."</p>
+            </div> 
+          </div>
+
+          <div class="feedback">
+            <img src="src/images/Gary D'Snake.png" alt="Gary D'Snake">
+            <div class="feedback-content">
+              <p>Gary D'Snake <span><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i></span></p>
+              <p>"Lugar aconchegante,acolhedor e diversas opções,cada prato é surreal!"</p>
+            </div> 
+          </div>
+
+          <div class="feedback">
+            <img src="src/images/Jafar.png" alt="Jafar">
+            <div class="feedback-content">
+              <p>Jafar <span><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i></span></p>
+              <p>"Restaurante calmo,quieto,cada prato dá vontade de ir mais vezes,muito bom..."</p>
+            </div> 
+          </div>
+
+          <div class="feedback">
+            <img src="src/images/Aurora.png" alt="Aurora">
+            <div class="feedback-content">
+              <p>Aurora <span><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i></span></p>
+              <p>"Cada prato maravilhoso,da pra comer de montão e ainda tirar aquele cochilinho depois do almoço,amei e quero ir mais vezes!!"</p>
+            </div> 
+          </div>
+
+          <div class="feedback">
+            <img src="src/images/Koda.png" alt="Koda">
+            <div class="feedback-content">
+              <p>Koda <span><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i></span></p>
+              <p>"Experiencia bem bacana e divertida,cada prato dá agua na boca."</p>
+            </div> 
+          </div>
+
+          <div class="feedback">
+            <img src="src/images/Cinderela (2).png" alt="Cinderela">
+            <div class="feedback-content">
+              <p>Cinderela <span><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i></span></p>
+              <p>"Mágico,encantador,magnifico.Atendimento perfeito,fazem os pratos rapido e ficam maravilhosos!!"</p>
+            </div> 
+          </div>
+
+          <div class="feedback">
+            <img src="src/images/Pato Donald.png" alt="Pato Donald">
+            <div class="feedback-content">
+              <p>Pato Donald <span><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i></span></p>
+              <p>"Sensacional,comida perfeita!"</p>
+            </div> 
+          </div>
+
+           <div class="feedback">
+            <img src="src/images/Pateta.png" alt="Pateta">
+            <div class="feedback-content">
+              <p>Pateta <span><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i></span></p>
+              <p>"Eu e o Max ficamos bastante felizes e satisfeitos. Pretendemos voltar mais vezes,show de bola!!"</p>
+            </div> 
+          </div>
+
+          </div>
+
+         
+          <a href="index.html" class="btn-default">Voltar ao Início</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer> 
+    <p>&copy; 2025 O Caldeirão dos Sabores. Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    $("#mobile_btn").click(function() {
+      $("#mobile_menu").fadeIn(200);
+    });
+
+    $("#close_mobile").click(function() {
+      $("#mobile_menu").fadeOut(200);
+    });
+  </script>
+
+</body>
+</html>
